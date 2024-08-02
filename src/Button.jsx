@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 function Button({ detail, pnr, dispatch, children }) {
   const [clicked, setclicked] = useState(false);
+  console.log("Railway API");
+  console.log(import.meta.env.VITE_RAILWAY_API_KEY);
   useEffect(
     function () {
       async function fetchPNRStatus() {
@@ -19,6 +21,8 @@ function Button({ detail, pnr, dispatch, children }) {
             }
           );
           const data = await response.json();
+          console.log("Data from API");
+          console.log(data);
           if(!data.ok){
             console.log("Not Ok");
           }
