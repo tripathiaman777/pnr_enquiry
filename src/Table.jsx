@@ -1,6 +1,10 @@
 import React from "react";
 import Button from "./Button";
 import Error from "./Error";
+import stations from "./StationName.json";
+function getStationByCode(code) {
+  return stations.stations.filter(station => station.stnCode === code)[0].stnName;
+}
 function splitDateTime(dateTimeString) {
   const dateObj = new Date(dateTimeString);
 
@@ -44,11 +48,11 @@ function Table({ dispatch, detail }) {
             </tr>
             <tr>
               <th>Boarding Station</th>
-              <td>{data.boardingPoint}</td>
+              <td>{getStationByCode(data.boardingPoint)}</td>
             </tr>
             <tr>
               <th>Destination Station</th>
-              <td>{data.destinationStation}</td>
+              <td>{getStationByCode(data.destinationStation)}</td>
             </tr>
             <tr>
               <th>Travel Distance</th>
