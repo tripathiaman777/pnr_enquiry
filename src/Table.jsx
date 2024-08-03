@@ -23,8 +23,10 @@ function Table({ dispatch, detail }) {
   if (!detail) return {};
   const data = detail.data;
   const dateofJourney = data ? data.dateOfJourney : null;
+  let date = null;
+  let time = null;
   if (dateofJourney) {
-    const { date, time } = splitDateTime(dateofJourney);
+    ({ date, time } = splitDateTime(dateofJourney));
   }
   return (
     <>
@@ -86,7 +88,7 @@ function Table({ dispatch, detail }) {
           </Button>
         </>
       ) : (
-        <Error dispatch={()=>dispatch({ type: "setreset" })}/>
+        <Error dispatch={() => dispatch({ type: "setreset" })} />
       )}
     </>
   );
